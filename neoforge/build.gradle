@@ -60,3 +60,8 @@ sourceSets.configureEach {
         }
     }
 }
+
+dependencies {
+    // DevAuth
+    runtimeOnly "me.djtheredstoner:DevAuth-neoforge:${devauth_version}"
+}

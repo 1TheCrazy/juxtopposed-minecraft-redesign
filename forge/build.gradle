@@ -75,6 +75,9 @@ sourceSets.main.resources.srcDir 'src/generated/resources'
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+
+    // DevAuth
+    runtimeOnly "me.djtheredstoner:DevAuth-forge-latest:${devauth_version}"
 }
 
 publishing {

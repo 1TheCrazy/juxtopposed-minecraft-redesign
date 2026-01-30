@@ -4,3 +4,14 @@ plugins {
     // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
     id 'net.neoforged.moddev' version '2.0.123' apply false
 }
+
+allprojects {
+    repositories {
+        maven {
+            url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1"
+            content {
+                includeGroup("me.djtheredstoner")
+            }
+        }
+    }
+}

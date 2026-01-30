@@ -10,6 +10,9 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    // DevAuth
+    runtimeOnly "me.djtheredstoner:DevAuth-fabric:${devauth_version}"
 }
 
 loom {
