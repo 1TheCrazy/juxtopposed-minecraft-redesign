@@ -8,6 +8,7 @@
     "ButtonTextureOverwrite"
   ],
   "client": [
+    "Initializer",
     "MainMenuMixin"
   ],
   "server": [],

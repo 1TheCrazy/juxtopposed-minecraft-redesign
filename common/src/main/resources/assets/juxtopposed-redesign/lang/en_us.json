@@ -6,5 +6,9 @@
   "gui.juxtopposed_redesign.menu.access_button": "Accessibility Options",
   "gui.juxtopposed_redesign.menu.news_button": "News!",
   "gui.juxtopposed_redesign.menu.quit_button": "Quit Game!",
-  "gui.juxtopposed_redesign.menu.continue": "Continue Playing"
+  "gui.juxtopposed_redesign.menu.continue": "Continue Playing",
+  "gui.juxtopposed_redesign.menu.server_type.realm": "Realm",
+  "gui.juxtopposed_redesign.menu.server_type.server": "Server",
+  "gui.juxtopposed_redesign.menu.server_type.lan": "Lan",
+  "gui.juxtopposed_redesign.menu.server_type.single_player": "Singleplayer"
 }

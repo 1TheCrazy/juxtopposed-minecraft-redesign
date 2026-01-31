@@ -14,6 +14,7 @@ public class JuxButton extends Button {
     private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_grey.png");
     private static final Identifier PINK_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_pink.png");
     private static final Identifier BLUE_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_blue.png");
+    private static final Identifier GREEN_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_green.png");
     public static final int TEX_WIDTH  = 816;
     public static final int TEX_HEIGHT = 408;
     private static final int STATE_COUNT = 3; // 0=disabled, 1=normal, 2=hovered
@@ -76,6 +77,11 @@ public class JuxButton extends Button {
     public static Builder builderBlue(Component message, Button.OnPress onPress) {
         return new Builder(message, onPress)
                 .texture(BLUE_TEXTURE, TEX_WIDTH, TEX_HEIGHT);
+    }
+
+    public static Builder builderGreen(Component message, Button.OnPress onPress) {
+        return new Builder(message, onPress)
+                .texture(GREEN_TEXTURE, TEX_WIDTH, TEX_HEIGHT);
     }
 
     public static class Builder extends Button.Builder{
