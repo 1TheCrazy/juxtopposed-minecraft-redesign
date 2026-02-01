@@ -33,7 +33,8 @@ public abstract class ButtonBuilderMixin {
     private void onReturnBuilder(CallbackInfoReturnable<Button> cir){
         var custom = JuxButton
                 .builderDefault(jrd$getMessage(), jrd$getOnPress())
-                        .size(jrd$getWidth(), jrd$getHeight());
+                        .size(jrd$getWidth(), jrd$getHeight())
+                .pos(jrd$getX(), jrd$getY());
 
         cir.setReturnValue(custom.build());
     }
