@@ -31,7 +31,9 @@ public class FileUtil {
     public static JuxConfig loadConfig() {
         try{
             String saveContents = readJSONObjectFileContents(getConfigPath());
-            Gson gson = new GsonBuilder().registerTypeAdapter(IJuxWorld.class, new GsonIJuxWorldAdapter()).create();
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(IJuxWorld.class, new GsonIJuxWorldAdapter())
+                    .create();
 
             return gson.fromJson(saveContents, JuxConfig.class);
         }
@@ -80,7 +82,9 @@ public class FileUtil {
     }
 
     public static void writeConfig(JuxConfig save) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(IJuxWorld.class, new GsonIJuxWorldAdapter())
+                .create();
         String json = gson.toJson(save);
 
         try {
