@@ -3,7 +3,9 @@ package dev.onethecrazy.mixin;
 import com.mojang.realmsclient.RealmsMainScreen;
 import com.mojang.realmsclient.gui.screens.RealmsNotificationsScreen;
 import dev.onethecrazy.Constants;
+import dev.onethecrazy.JuxClient;
 import dev.onethecrazy.ui.JuxButton;
+import dev.onethecrazy.ui.RecentWorldWidget;
 import dev.onethecrazy.ui.rendering.SkinPreviewRenderer;
 import dev.onethecrazy.ui.rendering.SmallLogoRenderer;
 import net.minecraft.client.Minecraft;
@@ -67,7 +69,7 @@ public abstract class MainMenuMixin extends Screen{
         if(this.minecraft.isDemo())
             this.createDemoMenuOptions(buttonY, ROW_HEIGHT);
         else
-            juxtopposed_redesign$createNormalMenuOptions(buttonY, ROW_HEIGHT);
+            juxtopposed_redesign$createNormalMenuOptions(buttonY);
 
         this.addRenderableWidget(new PlainTextButton(copyrightX, this.height - 10, copyrightTextWidth, 10, COPYRIGHT_TEXT, (button) -> {
             this.minecraft.setScreen(new CreditsAndAttributionScreen(this));
@@ -77,7 +79,7 @@ public abstract class MainMenuMixin extends Screen{
     }
 
     @Unique
-    private void juxtopposed_redesign$createNormalMenuOptions(int y, int rowHeight){
+    private void juxtopposed_redesign$createNormalMenuOptions(int y){
         int buttonX = this.width / 2 - 130;
 
         // Worlds Button
@@ -93,32 +95,50 @@ public abstract class MainMenuMixin extends Screen{
         this.addRenderableWidget(JuxButton.builderDefault(Component.translatable("gui.juxtopposed_redesign.menu.server_button"), (p_280833_) -> {
             Screen screen = this.minecraft.options.skipMultiplayerWarning ? new JoinMultiplayerScreen(this) : new SafetyScreen(this);
             this.minecraft.setScreen(screen);
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build()).active = multiplayerDisabled;
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build()).active = multiplayerDisabled;
 
         // Realms
         this.addRenderableWidget(JuxButton.builderPink(Component.translatable("gui.juxtopposed_redesign.menu.realms_button"), (p_315821_) -> {
             this.minecraft.setScreen(new RealmsMainScreen(this));
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build()).active = multiplayerDisabled;
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build()).active = multiplayerDisabled;
 
         // Settings
         this.addRenderableWidget(JuxButton.builderDefault(Component.translatable("gui.juxtopposed_redesign.menu.settings_button"), (p_315821_) -> {
             this.minecraft.setScreen(new OptionsScreen(this, this.minecraft.options));
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
 
         // Access
         this.addRenderableWidget(JuxButton.builderDefault(Component.translatable("gui.juxtopposed_redesign.menu.access_button"), (p_315821_) -> {
             this.minecraft.setScreen(new AccessibilityOptionsScreen(this, this.minecraft.options));
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
 
         // News
         this.addRenderableWidget(JuxButton.builderBlue(Component.translatable("gui.juxtopposed_redesign.menu.news_button"), (p_315821_) -> {
             Util.getPlatform().openUri(NEWS_LINK);
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
 
         // Quit
         this.addRenderableWidget(JuxButton.builderDefault(Component.translatable("gui.juxtopposed_redesign.menu.quit_button"), (p_315821_) -> {
             this.minecraft.stop();
-        }).bounds(buttonX, y += rowHeight, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
+        }).bounds(buttonX, y += MainMenuMixin.ROW_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT).tooltip(tooltip).build());
+
+        // Continue Playing Buttons
+        int buttonY = this.height / 4;
+        int continueX = buttonX + BUTTON_WIDTH + 10;
+        int continueMargin = 5;
+        int continueTextHeight = Math.round(font.lineHeight * ( 3f / 2));
+        int continueY = buttonY + continueMargin + continueTextHeight;
+        int widgetHeight = BUTTON_HEIGHT * 2;
+
+        var recents = JuxClient.getInstance().config.getRecentWorlds();
+
+        var first = recents.getNewest();
+        var second = recents.getOldest();
+
+        if (first != null)
+            this.addRenderableWidget(new RecentWorldWidget.Builder().entry(first).pos(continueX, continueY).build());
+        if(second != null)
+            this.addRenderableWidget(new RecentWorldWidget.Builder().entry(second).pos(continueX, continueY += widgetHeight + continueMargin).build());
     }
 
 
