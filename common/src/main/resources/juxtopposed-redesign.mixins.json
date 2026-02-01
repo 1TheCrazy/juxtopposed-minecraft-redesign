@@ -4,10 +4,9 @@
   "package": "dev.onethecrazy.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_18",
-  "mixins": [
-    "ButtonTextureOverwrite"
-  ],
+  "mixins": [],
   "client": [
+    "ButtonBuilderMixin",
     "Initializer",
     "MainMenuMixin"
   ],
