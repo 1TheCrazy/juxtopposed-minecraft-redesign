@@ -2,6 +2,7 @@ package dev.onethecrazy.ui;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
 import dev.onethecrazy.Constants;
+import dev.onethecrazy.JuxClient;
 import dev.onethecrazy.config.world.IJuxWorld;
 import dev.onethecrazy.config.world.JuxServer;
 import net.minecraft.client.Minecraft;
@@ -17,8 +18,8 @@ import org.jetbrains.annotations.NotNull;
 public class RecentWorldWidget extends AbstractWidget {
     private static final int WIDTH = 120;
     private static final int HEIGHT = 40;
-    private static final Identifier TEXTURE_GREEN = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_green.png");
-    private static final Identifier TEXTURE_PINK = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_pink.png");
+    private static final Identifier TEXTURE_GREEN = JuxClient.getInstance().config.getTextureManager().BUTTON_GREEN.get();
+    private static final Identifier TEXTURE_PINK = JuxClient.getInstance().config.getTextureManager().BUTTON_PINK.get();
     private static final int TEX_WIDTH  = 816;
     private static final int TEX_HEIGHT = 408;
     private static final int STATE_COUNT = 3; // 0=disabled, 1=normal, 2=hovered
