@@ -39,12 +39,12 @@ public abstract class MainMenuMixin extends Screen{
     @Unique private static final String NEWS_LINK = "https://www.minecraft.net/en-us/articles"; // I don't know what the vision here was
     @Unique private static final SmallLogoRenderer juxtopposed_redesign$logoRenderer = new SmallLogoRenderer(false);
     @Unique private static final SkinPreviewRenderer juxtopposed_redesign$skinPreviewRenderer = new SkinPreviewRenderer(30f);;
-    @Unique private static final Identifier juxtopposed_redesign$DECOR = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/decor_blocks.png");
-    @Unique private static final Identifier DECOR_TOP = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/decor_blocks_top.png");
+    @Unique private static final Identifier juxtopposed_redesign$DECOR = JuxClient.getInstance().config.getTextureManager().MAIN_MENU_DECOR_BOTTOM.get();
+    @Unique private static final Identifier DECOR_TOP = JuxClient.getInstance().config.getTextureManager().MAIN_MENU_DECOR_TOP.get();
     @Unique private static final Vector2i DECOR_DIMENSIONS = new Vector2i(3600, 824);
     @Unique private static final int BUTTON_WIDTH = 120;
     @Unique private static final int BUTTON_HEIGHT = 20;
-    @Unique private static final Identifier CHARACTER_CONTAINER = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/character_container.png");
+    @Unique private static final Identifier CHARACTER_CONTAINER = JuxClient.getInstance().config.getTextureManager().CHARACTER_CONTAINER.get();
     @Unique private static final Vector2i CONTAINER_DIMENSIONS = new Vector2i(818, 560);
 
     @Shadow private @Nullable SplashRenderer splash;
