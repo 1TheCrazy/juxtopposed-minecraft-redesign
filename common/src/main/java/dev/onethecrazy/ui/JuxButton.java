@@ -1,6 +1,6 @@
 package dev.onethecrazy.ui;
 
-import dev.onethecrazy.Constants;
+import dev.onethecrazy.JuxClient;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
@@ -11,11 +11,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class JuxButton extends Button {
-    private static final Identifier DEFAULT_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_grey.png");
-    private static final Identifier PINK_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_pink.png");
-    private static final Identifier BLUE_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_blue.png");
-    private static final Identifier GREEN_TEXTURE = Identifier.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/main_menu/button_green.png");
-    public static final int TEX_WIDTH  = 816;
+    private static final Identifier DEFAULT_TEXTURE = JuxClient.getInstance().config.getTextureManager().BUTTON_GREY.get();
+    private static final Identifier PINK_TEXTURE = JuxClient.getInstance().config.getTextureManager().BUTTON_PINK.get();
+    private static final Identifier BLUE_TEXTURE = JuxClient.getInstance().config.getTextureManager().BUTTON_BLUE.get();
+    private static final Identifier GREEN_TEXTURE = JuxClient.getInstance().config.getTextureManager().BUTTON_GREEN.get();
+    public static final int TEX_WIDTH = 816;
     public static final int TEX_HEIGHT = 408;
     private static final int STATE_COUNT = 3; // 0=disabled, 1=normal, 2=hovered
     public static final int STATE_HEIGHT = TEX_HEIGHT / STATE_COUNT;
