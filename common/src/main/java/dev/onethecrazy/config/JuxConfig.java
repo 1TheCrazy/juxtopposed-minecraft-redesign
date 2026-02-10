@@ -2,6 +2,7 @@ package dev.onethecrazy.config;
 
 import com.google.common.base.Objects;
 import dev.onethecrazy.config.world.IJuxWorld;
+import dev.onethecrazy.ui.LocalIngameInfoWidget;
 import dev.onethecrazy.ui.TextureManager;
 import dev.onethecrazy.util.FileUtil;
 import dev.onethecrazy.util.RecentList;
@@ -10,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class JuxConfig {
     // Config
     public boolean showPotionEffectHud = true;
+    public LocalIngameInfoWidget.Config localIngameInfoConfig = new LocalIngameInfoWidget.Config(true, true, true, true);
     private TextureManager.Theme theme = TextureManager.Theme.DARK;
 
     private final RecentList<IJuxWorld> recentWorlds = new RecentList<>(2);
