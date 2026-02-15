@@ -1,6 +1,7 @@
 package dev.onethecrazy.ui;
 
 import dev.onethecrazy.JuxClient;
+import dev.onethecrazy.util.ColorUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
@@ -23,6 +24,7 @@ public class JuxButton extends Button {
     private final Identifier texture;
     private final int u, v;
     private final int texWidth, texHeight;
+    private float alpha = 1f;
 
     public JuxButton(
             int x, int y, int width, int height,
@@ -42,6 +44,16 @@ public class JuxButton extends Button {
     }
 
     @Override
+    public void setAlpha(float alpha){
+        this.alpha = alpha;
+    }
+
+    @Override
+    public float getAlpha(){
+        return this.alpha;
+    }
+
+    @Override
     protected void renderContents(GuiGraphics gg, int mouseX, int mouseY, float partialTick) {
         int stateIndex = getStateIndex();
 
@@ -51,7 +63,8 @@ public class JuxButton extends Button {
                 (float) u, (float) (v + stateIndex * STATE_HEIGHT),
                 this.width, this.height,
                 texWidth, STATE_HEIGHT,
-                texWidth, texHeight
+                texWidth, texHeight,
+                ColorUtil.whiteWithAlpha(this.alpha)
         );
 
         this.renderDefaultLabel(

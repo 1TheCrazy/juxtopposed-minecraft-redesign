@@ -2,7 +2,6 @@ package dev.onethecrazy.mixin;
 
 import com.mojang.realmsclient.RealmsMainScreen;
 import com.mojang.realmsclient.gui.screens.RealmsNotificationsScreen;
-import dev.onethecrazy.Constants;
 import dev.onethecrazy.JuxClient;
 import dev.onethecrazy.ui.JuxButton;
 import dev.onethecrazy.ui.RecentWorldWidget;
