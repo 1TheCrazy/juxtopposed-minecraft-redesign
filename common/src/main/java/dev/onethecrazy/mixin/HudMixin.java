@@ -2,6 +2,7 @@ package dev.onethecrazy.mixin;
 
 import dev.onethecrazy.JuxClient;
 import dev.onethecrazy.ui.EffectIndicatorWidget;
+import dev.onethecrazy.ui.LocalIngameInfoWidget;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -25,5 +26,12 @@ public class HudMixin {
         EffectIndicatorWidget.renderAll(guiGraphics, minecraft);
 
         ci.cancel();
+    }
+
+    @Inject(method="renderHotbarAndDecorations", at=@At("TAIL"))
+    private void onVanillaRenderDecor(GuiGraphics guiGraphics, DeltaTracker deltaTracker, CallbackInfo ci){
+        var config = JuxClient.getInstance().config.localIngameInfoConfig;
+
+        LocalIngameInfoWidget.render(config, guiGraphics);
     }
 }
