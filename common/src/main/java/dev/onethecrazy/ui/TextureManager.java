@@ -17,6 +17,9 @@ public class TextureManager {
     public final ITexture BUTTON_BLUE;
     public final ITexture BUTTON_GREEN;
     public final ITexture POTION_EFFECT_CONTAINER;
+    public final ITexture SUN;
+    public final ITexture MOON;
+    public final ITexture LOCAL_WIDGET_BACKGROUND;
 
     public TextureManager(Theme theme) {
         this.theme = theme;
@@ -31,6 +34,9 @@ public class TextureManager {
         BUTTON_BLUE  = new AmbiguousTexture("gui/general/button_blue.png");
         BUTTON_GREEN = new AmbiguousTexture("gui/general/button_green.png");
         POTION_EFFECT_CONTAINER = new ThemedTexture(theme, "gui/game/effect_indicator.png");
+        SUN = new AmbiguousTexture("gui/general/sun.png");
+        LOCAL_WIDGET_BACKGROUND = new AmbiguousTexture("gui/general/local_info_widget_background.png");
+        MOON = new AmbiguousTexture("gui/general/moon.png");
     }
 
     public static Identifier texture(ITexture texture){
